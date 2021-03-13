@@ -1,16 +1,14 @@
 # women_safety_app
 
-A new Flutter application.
+The moto regarding this is to create a safe space for every individual. If someone feels unsafe during any point of time. This app would be one stop solution to reach.
+The key features provided by this application:
+1. SOS
+2. Emergency Contacts
+3. SMS
+4. Current Location.
 
-## Getting Started
+## The technologies used in the project
+1. Flutter
+2. Firebase -> Authentication and Database
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
