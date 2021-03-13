@@ -2,7 +2,7 @@ import 'package:flutter/material.dart'; //for material design
 
 import 'package:women_safety_app/size_conifg.dart'; //for media query
 
-import '../size_config.dart'; //for media query
+//import '../size_config.dart'; //for media query
 
 
 
