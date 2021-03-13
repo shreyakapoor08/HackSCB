@@ -162,6 +162,32 @@ class _HomeState extends State<Home> {
     _showVerifyEmailSentDialog();
   }
 
-  
+  void _showVerifyEmailSentDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Thank You'),
+            content: Text('Verifying link has been sent to your email'),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK'),
+              )
+            ],
+          );
+        });
+  }
+
+  void _signOut() async {
+    try {
+      await widget.auth.signOut();
+      widget.onSignOut();
+    } catch (e) {
+      print(e);
+    }
+  }
 
 }
