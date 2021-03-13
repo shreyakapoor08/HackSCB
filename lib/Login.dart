@@ -125,7 +125,7 @@ class _LoginState extends State<Login> {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text('Thank You!'),
-            content: Text('Verify link has been sent to your email.'),
+            content: Text('Verification link has been sent to your email.'),
             actions: <Widget>[
               FlatButton(
                 onPressed: () {
@@ -196,7 +196,7 @@ class _LoginState extends State<Login> {
               ? _changeFormToSignUp
               : _changeFormToSignIn,
           child: _formState == STATE.SIGNIN
-              ? Text('Create an accont',
+              ? Text('New to WeSafe? Register Here',
               style: TextStyle(fontSize: SizeConfig.safeBlockVertical * 2.5, fontWeight: FontWeight.w400))
               : Text(
             'Have an account? Sign In',
@@ -223,7 +223,7 @@ class _LoginState extends State<Login> {
           child: Center(
               child: _formState == STATE.SIGNIN
                   ? Text(
-                'SIGN IN',
+                'Login',
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -244,32 +244,7 @@ class _LoginState extends State<Login> {
     );
   }
 
-  _showPasswordInput() {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(0.0, SizeConfig.safeBlockVertical * 4, 0.0, 0.0),
-      child: TextFormField(
-        maxLines: 1,
-        decoration: InputDecoration(
-            labelText: 'PASSWORD',
-            icon: Icon(
-              Icons.lock,
-              color: Colors.grey,
-              size: SizeConfig.safeBlockVertical * 4,
-            ),
-            labelStyle: TextStyle(
-                fontFamily: 'Montserrat',
-                fontWeight: FontWeight.bold,
-                fontSize: SizeConfig.safeBlockVertical * 3.0,
-                color: Colors.grey),
-            focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.blue))),
-        validator: (val) =>
-        val.isEmpty ? 'Password can\'t be empty!' : null,
-        onSaved: (val) => _password = val,
-        obscureText: true,
-      ),
-    );
-  }
+
 
   _showEmailInput(){
     return Padding(
@@ -292,15 +267,88 @@ class _LoginState extends State<Login> {
             focusedBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Colors.blue))),
         validator: (val) =>
-        val.isEmpty ? 'Email can\'t be empty!' : null,
+        val.isEmpty ? 'Email is required!' : null,
         onSaved: (val) => _email = val.trim(),
       ),
     );
   }
 
+  _showPasswordInput() {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0.0, SizeConfig.safeBlockVertical * 4, 0.0, 0.0),
+      child: TextFormField(
+          maxLines: 1,
+          decoration: InputDecoration(
+              labelText: 'PASSWORD',
+              icon: Icon(
+                Icons.lock,
+                color: Colors.grey,
+                size: SizeConfig.safeBlockVertical * 4,
+              ),
+              labelStyle: TextStyle(
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.bold,
+                  fontSize: SizeConfig.safeBlockVertical * 3.0,
+                  color: Colors.grey),
+              focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.blue))),
+          validator: (val) =>
+          val.isEmpty ? 'Password id required ! : null,
+          onSaved: (val) => _password = val,
+      obscureText: true,
+    ),
+    SizedBox(height: 5.0),
+    Container(
+      alignment: Alignment(1.0, 0.0),
+      padding: EdgeInsets.only(top: 15.0, left: 20.0),
+      child: InkWell(
+        child: Text(
+          'Forgot Password ?',
+          style: TextStyle(
+            color: Colors.green,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Montserrat',
+            decoration: TextDecoration.underline),
+            ),
+        ),
+      ),
+    );
+
+  }
+
+  SizedBox(height: 20.0),
+  Container(
+  height: 40.0,
+  color: Colors.transparent,
+  child: Container(
+  decoration: BoxDecoration(
+  border: Border.all(
+  color: Colors.black,
+  style: BorderStyle.solid,
+  width: 1.0),
+  color: Colors.transparent,
+  borderRadius: BorderRadius.circular(20.0)),
+  child: Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: <Widget>[
+  Center(
+  child:
+  ImageIcon(AssetImage('assets/facebook.png')),
+  ),
+  SizedBox(width: 10.0),
+  Center(
+  child: Text('Log in with facebook',
+  style: TextStyle(
+  fontWeight: FontWeight.bold,
+  fontFamily: 'Montserrat')),
+  )
+  ],
+  ),
+  ),
+  )
   _showText(){
     return Hero(
-      tag: 'here',
+      tag: 'Welcome',
       child: Padding(
         padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
         child: _formState == STATE.SIGNIN
@@ -313,7 +361,7 @@ class _LoginState extends State<Login> {
                   0.0,
                   0.0),
               child: Text(
-                'Hello',
+                'Welcome',
                 style: TextStyle(
                     fontSize: SizeConfig.safeBlockVertical * 11,
                     fontWeight: FontWeight.bold),
@@ -326,24 +374,10 @@ class _LoginState extends State<Login> {
                   0.0,
                   0.0),
               child: Text(
-                'There',
+                'To WeSafe',
                 style: TextStyle(
                     fontSize: SizeConfig.safeBlockVertical * 11,
                     fontWeight: FontWeight.bold),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(
-                  SizeConfig.safeBlockHorizontal * 61,
-                  SizeConfig.safeBlockVertical * 17.5,
-                  0.0,
-                  0.0),
-              child: Text(
-                '.',
-                style: TextStyle(
-                    fontSize: SizeConfig.safeBlockVertical * 11,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue),
               ),
             ),
           ],
@@ -359,7 +393,7 @@ class _LoginState extends State<Login> {
               child: Text(
                 'SignUp',
                 style: TextStyle(
-                    fontSize: SizeConfig.safeBlockVertical * 11,
+                    fontSize: SizeConfig.safeBlockVertical * 9,
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -370,11 +404,10 @@ class _LoginState extends State<Login> {
                   0.0,
                   0.0),
               child: Text(
-                '.',
+                'To WeSafe',
                 style: TextStyle(
-                    fontSize: SizeConfig.safeBlockVertical * 11,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue),
+                    fontSize: SizeConfig.safeBlockVertical * 9,
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ],
