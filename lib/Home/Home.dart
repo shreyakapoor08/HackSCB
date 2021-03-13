@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:women_safety_app/size_conifg.dart';
 
-import '../size_config.dart';
+import 'subHome.dart';
+
+//import '../size_config.dart';
 
 
 class Home extends StatefulWidget {
@@ -17,6 +19,7 @@ class _HomeState extends State<Home> {
     SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(title: Text('Home'),),
+      body: SubHome(),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
