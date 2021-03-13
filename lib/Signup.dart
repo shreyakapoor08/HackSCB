@@ -95,6 +95,7 @@ class _SignupState extends State<Signup> {
           ),
           Container(
             // ============================ Email & password Field ========================
+            
             padding: EdgeInsets.only(
                 top: SizeConfig.safeBlockVertical * 3,
                 left: SizeConfig.safeBlockHorizontal * 9.85,
