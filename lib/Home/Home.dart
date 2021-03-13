@@ -18,6 +18,30 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  bool _isEmailVerified = false;
+
+  requestCameraPermission() async {
+    //final res = await Permission.requestPermissions([PermissionName.Camera,]);
+    res.forEach((permission) {
+      String a = '${permission.permissionStatus}';
+      setState(() {
+        if (a == 'PermissionStatus.allow') {
+          Lamp.turnOn();
+        }
+        else {
+          Permission.openSettings;
+        }
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _checkEmailVerification();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +122,46 @@ class _HomeState extends State<Home> {
         ),
       ),
 
+
     );
   }
+
+  void _checkEmailVerification() async {
+    _isEmailVerified = await widget.auth.isEmailVerified();
+    if (!_isEmailVerified) _showVerifyEmailDialog();
+  }
+
+  void _showVerifyEmailDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Please verify your email'),
+            content: Text('We need you to verify your email to continue.'),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  _sendVerifyEmail();
+                },
+                child: Text('Send me!'),
+              ),
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('Dismiss'),
+              )
+            ],
+          );
+        });
+  }
+
+  void _sendVerifyEmail() {
+    widget.auth.sendEmailVerification();
+    _showVerifyEmailSentDialog();
+  }
+
+  
 
 }
