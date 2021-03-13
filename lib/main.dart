@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget // stateless Widgets dont have any Ui change
 
 class MyAppHome extends StatefulWidget {
   MyAppHome({this.auth});
-  AuthFunc auth;  //object for AuthFunc Class
+  AuthFunc auth;  //object for AuthFunc Class defined in FirebaseAuthUtils
 
   @override
   State<StatefulWidget> createState() => _MyAppHomeState();
