@@ -7,7 +7,12 @@ import 'subHome.dart';
 
 
 class Home extends StatefulWidget {
+  AuthFunc auth;
+  VoidCallback onSignOut;
+  String userId, userEmail;
 
+  Home({Key key, this.auth, this.onSignOut, this.userId, this.userEmail})
+      : super(key: key);
   @override
   _HomeState createState() => _HomeState();
 }
