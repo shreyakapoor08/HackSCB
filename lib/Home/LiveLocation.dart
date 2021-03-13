@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'package:share/share.dart';
-import 'package:signup_login_app/Home/SmsCrud.dart' as prefix0;
-import 'SmsCrud.dart';
 
 
 class LiveLocation extends StatefulWidget {
@@ -71,7 +68,7 @@ class _LiveLocationState extends State<LiveLocation> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(title:
-        Text("My Location"),),
+      Text("My Location"),),
       body: GoogleMap(
         mapType: MapType.hybrid,
         myLocationEnabled: true,
