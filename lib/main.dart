@@ -51,7 +51,12 @@ class _MyAppHomeState extends State<MyAppHome> {
       });
     });
 
-    ShakeDetector.autoStart(
+    
+    /*Shake detor is used to call to the emergency number 112 when ever there is no time left and urgent help is required, 
+    even if the app is in background , shaking will initiaate a call to 112
+    */
+    
+    ShakeDetector.autoStart(   // ShakeDetector is used through shake package
       onPhoneShake: (){
 
         var text = '112';
