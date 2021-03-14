@@ -1,6 +1,5 @@
-import 'dart:math';
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sms/sms.dart';
 
 class SmsCRUDPage extends StatefulWidget {
   @override
@@ -12,8 +11,6 @@ class SmsCRUDPage extends StatefulWidget {
 class SmsCRUDPageState extends State<SmsCRUDPage> {
   String id;
   final db = Firestore.instance;
-  final _formKey = GlobalKey<FormState>();
-
   final message = TextEditingController();
   final name = TextEditingController();
   final number = TextEditingController();
@@ -46,12 +43,12 @@ class SmsCRUDPageState extends State<SmsCRUDPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Name: ${doc.data['Name']}',
+                      'Name',
                       style: TextStyle(fontSize: 24),
                     ),
                     SizedBox(height: 8.0,),
                     Text(
-                      'Number: ${doc.data['Phone Number']}',
+                      'Number',
                       style: TextStyle(fontSize: 18),
                     ),
                   ],
@@ -103,11 +100,9 @@ class SmsCRUDPageState extends State<SmsCRUDPage> {
         if (value.isEmpty) {
           return 'Please enter some text';
         }
-        else{
-          return null;
-        }
+       
       },
-      onSaved: (value) => name.text = value,
+   
     );
   }
 
@@ -129,19 +124,18 @@ class SmsCRUDPageState extends State<SmsCRUDPage> {
           return null;
         }
       },
-      onSaved: (value) => number.text = value,
+      
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    message.text = "I'm in a trouble, please help !!!";
-    SizeConfig().init(context);
+   
     return Scaffold(
       appBar: AppBar(
         title: Text('SMS'),
       ),
-      body: ListView(
+      body: ListView.count(
         padding: EdgeInsets.all(8),
         children: <Widget>[
           Form(
@@ -166,7 +160,7 @@ class SmsCRUDPageState extends State<SmsCRUDPage> {
             ],
           ),
           SizedBox(height: 20.0,width: 0.0,),
-          StreamBuilder<QuerySnapshot>(
+          StreamBuilder(
             stream: db.collection('CRUD').snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
@@ -189,13 +183,7 @@ class SmsCRUDPageState extends State<SmsCRUDPage> {
       print(ref.documentID);
     }
   }
-/*
-  void readData() async {
-    DocumentSnapshot snapshot = await db.collection('CRUD').document(id).get();
-    print(snapshot.data['name']);
-  }
 
- */
 
 
   void deleteData(DocumentSnapshot doc) async {
