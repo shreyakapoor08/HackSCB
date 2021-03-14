@@ -115,9 +115,7 @@ class CallCRUDPageState extends State<CallCRUDPage> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Emergency Contacts'),
-      ),
+      
       body: ListView(
         padding: EdgeInsets.all(8),
         children: <Widget>[
@@ -141,7 +139,7 @@ class CallCRUDPageState extends State<CallCRUDPage> {
             ],
           ),
           SizedBox(height: 20.0,width: 0.0,),
-          StreamBuilder<QuerySnapshot>(
+          StreamBuilder<>(
             stream: db.collection('CRUD').snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
