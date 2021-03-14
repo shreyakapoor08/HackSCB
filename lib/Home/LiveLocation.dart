@@ -40,8 +40,8 @@ class _LiveLocationState extends State<LiveLocation> {
     GoogleMapController controller = await _controller.future;
     location.onLocationChanged().listen((LocationData currentLocation) {
 
-      lat = currentLocation.latitude;
-      long = currentLocation.longitude;
+      lat = currentLocation.latitude; //latitude
+      long = currentLocation.longitude; //longitude
 
       controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
           bearing: 351.8334901395799,
@@ -59,10 +59,7 @@ class _LiveLocationState extends State<LiveLocation> {
 
 
 
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
+  
 
   @override
   Widget build(BuildContext context) {
@@ -72,9 +69,6 @@ class _LiveLocationState extends State<LiveLocation> {
       body: GoogleMap(
         mapType: MapType.hybrid,
         myLocationEnabled: true,
-        initialCameraPosition: _kGooglePlex,
-        tiltGesturesEnabled: true,
-        myLocationButtonEnabled: true,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
