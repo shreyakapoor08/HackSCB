@@ -73,12 +73,6 @@ class CallCRUDPageState extends State<CallCRUDPage> {
 
   TextFormField buildTextFieldName() {
     return TextFormField(
-      decoration: InputDecoration(
-        border: InputBorder.none,
-        hintText: 'Name',
-        fillColor: Colors.grey[300],
-        filled: true,
-      ),
       keyboardType: TextInputType.text,
       controller: name,
       validator: (value) {
@@ -163,24 +157,5 @@ class CallCRUDPageState extends State<CallCRUDPage> {
     );
   }
 
-  void createData() async {
-    if (_formKey.currentState.validate()) {
-      _formKey.currentState.save();
-      DocumentReference ref = await db.collection('CRUD').add({'Name': name.text, 'Phone Number': number.text});
-      setState(() => id = ref.documentID);
-      print(ref.documentID);
-    }
-  }
-
-  void readData() async {
-    DocumentSnapshot snapshot = await db.collection('CRUD').document(id).get();
-    print(snapshot.data['name']);
-  }
-
-
-  void deleteData(DocumentSnapshot doc) async {
-    await db.collection('CRUD').document(doc.documentID).delete();
-    setState(() => id = null);
-  }
 
 }
