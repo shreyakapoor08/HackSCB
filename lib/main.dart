@@ -118,7 +118,7 @@ class _MyAppHomeState extends State<MyAppHome> {
 }
 
 
-//Widget to show a circular progress indicator
+//Widget to show a circular progress indicator 
 Widget _showLoading() {
   return Scaffold(
     body: Container(
