@@ -12,3 +12,37 @@ The key features provided by this application:
 2. Firebase -> Authentication and Database
 
 
+Installation
+------------
+ 1. Install android studio
+ 2. Add and install Flutter Plugin
+ 3. Check dependecies and gradle
+ 4. Clone and run the project
+ 5. To build your own database you will need to create one using Firebase
+
+Some Screenshots of the Application
+-----------------------------------
+
+Home Screen
+----------
+![](lib/images/home.jpeg)
+
+
+Location Screen
+---------------
+![](lib/images/loc.jpeg)
+
+
+Drawer on the application
+-------------------------
+![](lib/images/drawer.jpeg)
+
+SMS functionality
+-----------------
+![](lib/images/sms.jpeg)
+
+
+Call functionality
+------------------
+![](lib/images/fire_call.jpeg)
+
